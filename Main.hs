@@ -6,7 +6,7 @@ import qualified Text.Regex.PCRE.Light as R
 import qualified Data.ByteString.Char8 as B
 
 htmlRegex :: R.Regex
-htmlRegex = R.compile (B.pack "</(html|p|body)>") []
+htmlRegex = R.compile (B.pack "</(html|body|p|ul|a|h1|h2|h3) *>|<br */?>") []
 
 main = do
   s <- getContents
