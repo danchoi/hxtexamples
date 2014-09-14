@@ -2,9 +2,17 @@ module Main where
 import Text.XML.HXT.Core
 import Data.List (intercalate)
 import Data.List (isPrefixOf)
+import qualified Text.Regex.PCRE.Light as R
+import qualified Data.ByteString.Char8 as B
+
+htmlRegex :: R.Regex
+htmlRegex = R.compile (B.pack "</(html|p|body)>") []
 
 main = do
   s <- getContents
+  -- R.match returns Just or Nothing
+  -- then decide whether to process as HTML or pass through plain text
+  print $ R.match htmlRegex (B.pack s) []
   r <- runX (
       -- configSysVars [ withTrace 1 ] >>>
       readString [withParseHTML yes, withValidate no] s

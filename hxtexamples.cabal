@@ -18,6 +18,8 @@ cabal-version:       >=1.10
 executable hxtexamples
   main-is:             Main.hs
   build-depends:       base >=4.7 && <4.8,
-                       hxt 
+                       hxt,
+                       pcre-light,
+                       bytestring
   -- hs-source-dirs:      
   default-language:    Haskell2010
