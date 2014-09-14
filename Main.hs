@@ -1,5 +1,6 @@
 module Main where
 import Text.XML.HXT.Core
+import Data.List (intercalate)
 
 main = do
   s <- getContents
@@ -11,7 +12,7 @@ main = do
       -- >>> putXmlTree "-"
       >>> writeDocumentToString [withIndent yes, withOutputHTML, withOutputEncoding utf8] 
       )
-  print r
+  putStrLn $ intercalate "\n" r
   return ()
 
 p = deep (isElem >>> hasName "body") 
