@@ -15,4 +15,6 @@ main = do
   putStrLn $ intercalate "\n" r
   return ()
 
-p = deep (isElem >>> hasName "body") 
+p = (deep (isElem >>> hasName "body"))
+    `orElse`
+    this
